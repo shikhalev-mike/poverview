@@ -28,12 +28,13 @@
         <div 
           class="card h-100 package-card" 
           style="cursor: pointer;"
-          [class.selected]="pkg === selectedPkg"
-          (click)="selectPkg(pkg)"
+          [class.selected]="pkg === hoveredPkg"
+          (mouseenter)="onPkgEnter(pkg)"
+          (mouseleave)="onPkgLeave()"
         >
           <div 
             class="card-header"
-            [class.selected-header]="pkg === selectedPkg"
+            [class.selected-header]="pkg === hoveredPkg"
             [class.highlighted-dependency]="isDependency(pkg)"
           >
             <h5 class="card-title">

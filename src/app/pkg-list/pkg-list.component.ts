@@ -15,7 +15,7 @@ export class PkgListComponent implements OnInit {
   pkgs: Pkg[] = [];
   filteredPkgs: Pkg[] = [];
   searchTerm = '';
-  selectedPkg: Pkg | null = null;
+  hoveredPkg: Pkg | null = null;
   dependencies: { [pkgId: string]: string[] } = {};
   loadingDeps: Set<string> = new Set();
 
@@ -48,18 +48,17 @@ export class PkgListComponent implements OnInit {
   refreshPackages() {
     this.loadPackages();
     this.searchTerm = '';
-    this.selectedPkg = null;
+    this.hoveredPkg = null;
   }
 
-  selectPkg(pkg: Pkg) {
-    if (this.selectedPkg?.id === pkg.id) {
-      this.selectedPkg = null;
-    } else {
-      this.selectedPkg = pkg;
-      if (!this.dependencies[pkg.id] && !this.loadingDeps.has(pkg.id)) {
-        this.loadingDeps.add(pkg.id);
-        this.pkgService.getDependencies(encodeURIComponent(pkg.id)).subscribe({
-          next: (deps) => {
+  onPkgEnter(pkg: Pkg) {
+    this.hoveredPkg = pkg;
+    // если зависимости ещё не грузили и не в процессе — грузим
+    if (!this.dependencies[pkg.id] && !this.loadingDeps.has(pkg.id)) {
+      this.loadingDeps.add(pkg.id);
+      this.pkgService.getDependencies(encodeURIComponent(pkg.id))
+        .subscribe({
+          next: deps => {
             this.dependencies[pkg.id] = deps || [];
             this.loadingDeps.delete(pkg.id);
           },
@@ -68,13 +67,16 @@ export class PkgListComponent implements OnInit {
             this.loadingDeps.delete(pkg.id);
           }
         });
-      }
     }
   }
 
+  onPkgLeave() {
+    this.hoveredPkg = null;
+  }
+
   isDependency(pkg: Pkg): boolean {
-    if (!this.selectedPkg) return false;
-    const deps = this.dependencies[this.selectedPkg.id] || [];
+    if (!this.hoveredPkg) return false;
+    const deps = this.dependencies[this.hoveredPkg.id] || [];
     return deps.includes(pkg.id);
   }
 
