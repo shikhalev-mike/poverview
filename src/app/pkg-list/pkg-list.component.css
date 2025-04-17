@@ -1,0 +1,125 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+  }
+  
+  .container-fluid {
+    height: 100vh;
+  }
+  
+  .search-bar {
+    flex-shrink: 0;
+  }
+  
+  .scrollable-container {
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 10px;
+  }
+  
+  .package-card {
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    transition: all 0.2s ease;
+    width: 100%;
+  }
+  
+  .package-card:hover {
+    border-color: #aaa;
+  }
+  
+  .package-card.selected {
+    border-color: #ff6200;
+    background-color: #fff3e0;
+  }
+  
+  .card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    transition: color 0.2s ease;
+  }
+  
+  .card-title .prefix {
+    color: #ff6200;
+  }
+  
+  .card-title .suffix {
+    color: #333;
+  }
+  
+  .card-title.hovered {
+    color: #007bff;
+  }
+  
+  .card-title.dependency-highlighted {
+    color: #28a745 !important;
+  }
+  
+  .card-text {
+    font-size: 0.9rem;
+    color: #333;
+    margin-bottom: 0.3rem;
+  }
+  
+  .dependency-text {
+    font-size: 0.85rem;
+    color: #666;
+  }
+  
+  .download-icon {
+    color: #888;
+    font-size: 0.9rem;
+  }
+  
+  .card-body {
+    padding: 1rem;
+  }
+  
+  .package-card.highlighted-dependency {
+    border: 2px dashed #28a745;
+    background-color: #e6f4ea;
+  }
+
+  .card-header {
+    padding: 0.75rem 1rem;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  .card-header.selected-header {
+    background-color: #fff3e0;
+    color: #ff6200;
+    font-weight: bold;
+  }
+  
+  .card-header.highlighted-dependency {
+    background-color: #e6f4ea;
+    color: #28a745;
+    font-weight: bold;
+  }
+  
+  .card-body {
+    padding: 1rem;
+  }
+  
+  .package-card {
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    transition: all 0.2s ease;
+    width: 100%;
+  }
+  
+  .package-card:hover {
+    border-color: #aaa;
+  }
+  
+  .package-card.selected {
+    background-color: transparent;
+    
+  }
+  
+  

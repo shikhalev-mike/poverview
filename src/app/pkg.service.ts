@@ -13,14 +13,15 @@ export class PkgService {
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<Pkg[]> {
-    return this.http.get<Pkg[]>(this.url);
+    return this.http.get<Pkg[]>(`${this.url}/packages`);
   }
 
-  get(id: number): Observable<Pkg> {
+  get(id: string): Observable<Pkg> {
     return this.http.get<Pkg>(`${this.url}/packages/${id}`);
   }
 
-  getDepend(id: number): Observable<Pkg> {
-    return this.http.get<Pkg>(`${this.url}/packages/${id}/dependencies`);
+  getDependencies(id: string): Observable<string[]> {
+    const encodedId = encodeURIComponent(id);
+    return this.http.get<string[]>(`${this.url}/packages/${encodedId}/dependencies`);
   }
 }
