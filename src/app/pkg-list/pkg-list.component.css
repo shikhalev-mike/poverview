@@ -1,87 +1,32 @@
+/* Глобальные стили */
 html, body {
     height: 100%;
     margin: 0;
     overflow: hidden;
   }
   
+  /* Основной контейнер */
   .container-fluid {
     height: 100vh;
+    display: flex;
+    flex-direction: column;
   }
   
+  /* Блок поиска */
   .search-bar {
     flex-shrink: 0;
+    z-index: 1020; /* Чтобы был поверх карточек при прокрутке */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   }
   
-  .scrollable-container {
+  /* Контейнер карточек */
+  .cards-container {
     overflow-y: auto;
-    overflow-x: hidden;
-    padding-right: 10px;
+    flex-grow: 1;
+    padding-bottom: 20px;
   }
   
-  .package-card {
-    border-radius: 10px;
-    border: 1px solid #ddd;
-    transition: all 0.2s ease;
-    width: 100%;
-  }
-  
-  .package-card:hover {
-    border-color: #aaa;
-  }
-  
-  .package-card.selected {
-    border-color: #ff6200;
-    background-color: #fff3e0;
-  }
-  
-  .card-title {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    transition: color 0.2s ease;
-  }
-  
-  .card-title .prefix {
-    color: #ff6200;
-  }
-  
-  .card-title .suffix {
-    color: #333;
-  }
-  
-  .card-title.hovered {
-    color: #007bff;
-  }
-  
-  .card-title.dependency-highlighted {
-    color: #28a745 !important;
-  }
-  
-  .card-text {
-    font-size: 0.9rem;
-    color: #333;
-    margin-bottom: 0.3rem;
-  }
-  
-  .dependency-text {
-    font-size: 0.85rem;
-    color: #666;
-  }
-  
-  .download-icon {
-    color: #888;
-    font-size: 0.9rem;
-  }
-  
-  .card-body {
-    padding: 1rem;
-  }
-  
-  .package-card.highlighted-dependency {
-    border: 2px dashed #28a745;
-    background-color: #e6f4ea;
-  }
-
+  /* Стили карточек (остаются без изменений) */
   .card-header {
     padding: 0.75rem 1rem;
     background-color: #f8f9fa;
@@ -119,7 +64,33 @@ html, body {
   
   .package-card.selected {
     background-color: transparent;
-    
   }
   
+  .card-title {
+    font-size: 1.1rem;
+    margin: 0;
+  }
   
+  .prefix {
+    color: #ff6200;
+  }
+  
+  .suffix {
+    color: #333;
+  }
+  
+  .card-text {
+    font-size: 0.9rem;
+    color: #333;
+    margin-bottom: 0.3rem;
+  }
+  
+  .dependency-text {
+    font-size: 0.85rem;
+    color: #666;
+  }
+  
+  .download-icon {
+    color: #888;
+    font-size: 0.9rem;
+  }
